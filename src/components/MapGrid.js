@@ -86,7 +86,7 @@ class MapGrid extends Component {
               {e.map((event, index) => {
                 return(
                   <span className={`room ${event}`} >
-                    {this.state.current_room[0] === index && this.state.current_room[1] === i ? ":^)" : ""}
+                    {this.state.current_room[0] === index && this.state.current_room[1] === i ? ":~)" : ""}
                   </span>
                 )
               })}
