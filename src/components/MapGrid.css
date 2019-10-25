@@ -1,5 +1,6 @@
 .Map{
   background: grey;
+  padding: 30px;
 }
 .on{
   background: black;
@@ -20,15 +21,16 @@
 
 .row{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding: 0px;
 }
 .arrows{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40px;
-  margin-left: calc(50% - 20px);
+  width: 50px;
+  margin-left: 150px;
+  margin-bottom: 16px;
 }
 .leftright{
   display: flex;
