@@ -3,7 +3,8 @@ import "./MapGrid.css"
 
 class MapGrid extends Component {
   state = {
-    grid: []
+    grid: [],
+    current_room: [4,3]
   };
 
   // handleSubmit = event => {
@@ -36,14 +37,15 @@ class MapGrid extends Component {
   render() {
     return (
       <div className="Map">
+
         <button onClick={this.map}>make map</button>
-        {this.state.grid.length > 0 && this.state.grid.map(e => {
+        {this.state.grid.length > 0 && this.state.grid.map((e, i) => {
           return(
             <div className="row">
-              {e.map(ev => {
+              {e.map((event, index) => {
                 return(
-                  <span className={`room ${ev}`} >
-                    
+                  <span className={`room ${event}`} >
+                    {this.state.current_room[0] === index && this.state.current_room[1] === i ? ":^)" : ""}
                   </span>
                 )
               })}
