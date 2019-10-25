@@ -22,10 +22,20 @@ class Login extends Component {
     });
   };
 
+
   handleSubmit = event => {
-    event.preventDefault();
-    this.props.userLoginFetch(this.state)
-  };
+    event.preventDefault()
+   this.props.userLoginFetch(this.state)
+   .then(res => {
+            console.log(res)
+    if(res){
+        this.props.history.push('/dungeon')
+    }    
+})
+.catch(err => {
+    console.log(err)
+})
+  }
 
   render() {
     return (
@@ -59,7 +69,6 @@ class Login extends Component {
   }
 }
 
-// export default Login;
 
 const mapDispatchToProps = dispatch => ({
     userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))

@@ -31,15 +31,29 @@ export const SIGNUP_FAIL = 'SIGNUP_FAIL'
 //   } catch {}
 // };
 
+export const userLoginFetch = values => {
+  return dispatch => {
+    dispatch({ type: LOGIN_START });
+    return axios
+      .post("https://lambda-valley.herokuapp.com/auth/login", values)
+      .then(res => {
+        console.log(res); // data was created successfully and logs to console
+        localStorage.setItem("token", res.data.access);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        return true;
+      })
+  };
+ };
 
 
-export const userLoginFetch = payload => dispatch => {
-  dispatch({ type: LOGIN_START })
-  axiosWithAuth()
-      .post('https://lambda-valley.herokuapp.com/auth/login', payload)
-      .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
-      .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
-}
+
+// export const userLoginFetch = payload => dispatch => {
+//   dispatch({ type: LOGIN_START })
+//   axiosWithAuth()
+//       .post('https://lambda-valley.herokuapp.com/auth/login', payload)
+//       .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
+//       .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
+// }
 
 export const userPostFetch = payload => dispatch => {
   dispatch({ type: SIGNUP_START })
@@ -52,31 +66,7 @@ export const userPostFetch = payload => dispatch => {
 
 
 
-export const getProfileFetch = () => {
-  return dispatch => {
-    const token = localStorage.token;
-    if (token) {
-      return fetch("http://localhost:3000/api/v1/profile", {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      })
-        .then(resp => resp.json())
-        .then(data => {
-          if (data.message) {
-            // An error will occur if the token is invalid.
-            // If this happens, you may want to remove the invalid token.
-            localStorage.removeItem("token")
-          } else {
-            dispatch(loginUser(data.user))
-          }
-        })
-    }
-  }
-}
+
 
 
 
