@@ -10,7 +10,7 @@ class Hud extends React.Component {
     return (
       <div>
         <MapGrid />
-        <TextSpace />
+        
       </div>
     );
   }
