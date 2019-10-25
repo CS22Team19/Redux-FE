@@ -1,0 +1,24 @@
+.Map{
+  background: grey;
+}
+.on{
+  background: black;
+}
+
+.off{
+  background: grey;
+}
+
+.room{
+  /* padding: 8px; */
+  width: 30px;
+  height: 30px;
+  margin: 0px;
+  border-radius: 12px;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
