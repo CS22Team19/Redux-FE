@@ -19,7 +19,8 @@ const initialState = {
     isRegistering: false,
     isRegistered: false,
     authToken: null,
-    loginError: ''
+    loginError: '',
+    player: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -43,7 +44,8 @@ const rootReducer = (state = initialState, action) => {
             isLogging: false,
             isLoggedIn: true,
             authToken: action.payload.token,
-            currentUser: action.payload
+            currentUser: action.payload,
+            player: action.stuff
         }
     }
     case LOGIN_FAIL: {
