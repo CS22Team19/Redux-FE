@@ -5,8 +5,8 @@
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import {connect} from 'react-redux';
-// import {userLoginFetch} from '../actions';
+import {connect} from 'react-redux';
+import {userLoginFetch} from '../actions';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./Login.css";
 
@@ -24,7 +24,7 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // this.props.userLoginFetch(this.state)
+    this.props.userLoginFetch(this.state)
   };
 
   render() {
@@ -59,13 +59,23 @@ class Login extends Component {
   }
 }
 
-export default Login;
+// export default Login;
 
-// const mapDispatchToProps = dispatch => ({
-//     userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
-//   })
+const mapDispatchToProps = dispatch => ({
+    userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
+  })
 
-//   export default connect(null, mapDispatchToProps)(Login);
+  export default connect(null, mapDispatchToProps)(Login);
+
+
+
+
+
+
+
+
+
+
 
 // If set up properly, your backend will create the user instance, salt the password using
 // BCrypt, and then return an object with a user key and a jwt key. This object is the important

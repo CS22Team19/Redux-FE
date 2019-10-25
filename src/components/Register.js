@@ -5,9 +5,9 @@
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 
-// import {userPostFetch} from '../actions';
+import {userPostFetch} from '../actions';
 // ^^This will be the function that handles the fetch itself, as well as saving the user object to the Redux store and adding the token to localStorage
 
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
@@ -27,7 +27,7 @@ class Register extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // this.props.userPostFetch(this.state)
+    this.props.userPostFetch(this.state)
   };
 
   render() {
@@ -62,10 +62,10 @@ class Register extends Component {
   }
 }
 
-export default Register;
+// export default Register;
 
-// const mapDispatchToProps = dispatch => ({
-//     userPostFetch: userInfo => dispatch(userPostFetch(userInfo))
-//   })
+const mapDispatchToProps = dispatch => ({
+    userPostFetch: userInfo => dispatch(userPostFetch(userInfo))
+  })
 
-//   export default connect(null, mapDispatchToProps)(Register);
+  export default connect(null, mapDispatchToProps)(Register);
