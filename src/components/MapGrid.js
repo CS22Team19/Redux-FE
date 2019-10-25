@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 import "./MapGrid.css"
 
 class MapGrid extends Component {
   state = {
     grid: [],
-    current_room: [4,3]
+    current_room: [9,5] //[x(left and right), y(up and down)]
   };
 
   // handleSubmit = event => {
@@ -32,11 +33,43 @@ class MapGrid extends Component {
     this.setState({grid: grid_arr})
     console.log(this.state.grid.length)
   }
+  up = event => {
+    if(this.state.grid[this.state.current_room[1]-1][this.state.current_room[0]] === "on"){
+      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+      this.setState({current_room: [this.state.current_room[0], this.state.current_room[1]-1]})
+    }
+  }
+  left = event => {
+    if(this.state.grid[this.state.current_room[1]][this.state.current_room[0]-1] === "on"){
+      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+      this.setState({current_room: [this.state.current_room[0]-1, this.state.current_room[1]]})
+    }
+  }
+  right = event => {
+    if(this.state.grid[this.state.current_room[1]][this.state.current_room[0]+1] === "on"){
+      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+      this.setState({current_room: [this.state.current_room[0]+1, this.state.current_room[1]]})
+    }
+  }
+  down = event => {
+    if(this.state.grid[this.state.current_room[1]+1][this.state.current_room[0]] === "on"){
+      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+      this.setState({current_room: [this.state.current_room[0], this.state.current_room[1]+1]})
+    }
+  }
 
 
   render() {
     return (
       <div className="Map">
+        <div className="arrows">
+        <button onClick={this.up}>^</button>
+        <div className="leftright">
+          <button onClick={this.left}>&lt;</button>
+          <button onClick={this.right}>&gt;</button>
+        </div>
+        <button onClick={this.down}>v</button>
+        </div>
 
         <button onClick={this.map}>make map</button>
         {this.state.grid.length > 0 && this.state.grid.map((e, i) => {
@@ -59,4 +92,4 @@ class MapGrid extends Component {
   }
 }
 
-export default MapGrid;
+export default connect(null, {})(MapGrid)
