@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link , Switch} from "react-router-dom";
 import Login from "./Login";
 import Register from './Register'
+import MapGrid from './MapGrid'
 
 class App extends Component {
   componentDidMount = () => {
@@ -16,6 +17,7 @@ class App extends Component {
        <Switch>
        <Route exact path="/login" component={Login} />
        <Route exact path="/register" component={Register} />
+       <Route exact path="/dungeon" component={MapGrid} />
        </Switch>
     </div>
   )
