@@ -1,0 +1,6 @@
+.hud{
+  display: flex;
+  flex-direction: row;
+  background: grey;
+  height: 100vh;
+}

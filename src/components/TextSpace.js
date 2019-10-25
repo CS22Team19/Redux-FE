@@ -23,12 +23,10 @@ class TextSpace extends Component {
       
       <div className="text-space">
         <h2>Room Details</h2>
-        <h6> Current Player Name:
-          {/* {this.props.player.username} */}
-       
+        <h6>
        </h6>
-        <h6>Room Title: {title[1]}  </h6>
-        <h6>Room Description: {description[1]}  </h6>
+        <h6>Room Title: {this.props.room_title}  </h6>
+        <h6>Room Description: {this.props.room_description}  </h6>
         <h6> Other Players in Room: 
         {otherPlayers.map(player => {
           return " " + player + ", "
