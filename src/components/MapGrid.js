@@ -5,15 +5,19 @@ import "./MapGrid.css"
 class MapGrid extends Component {
   state = {
     grid: [],
-    current_room: [9,5] //[x(left and right), y(up and down)]
+    current_room: [0,0] //[x(left and right), y(up and down)]
   };
 
   // handleSubmit = event => {
   //   event.preventDefault();
   //   // this.props.userLoginFetch(this.state)
   // };
-  map = event => {
-    event.preventDefault()
+  componentDidMount = () => {
+    this.map();
+  }
+  
+  map = () => {
+    // event.preventDefault()
     let grid_arr = []
     for(let i = 0; i < 13; i++){
       grid_arr[i] = []
@@ -34,27 +38,31 @@ class MapGrid extends Component {
     console.log(this.state.grid.length)
   }
   up = event => {
-    if(this.state.grid[this.state.current_room[1]-1][this.state.current_room[0]] === "on"){
-      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+    if(this.state.current_room[1] !== 0 && this.state.grid[this.state.current_room[1]-1][this.state.current_room[0]] === "on"){
+      // console.log(this.state.current_room[0], this.state.current_room[1]-1)
       this.setState({current_room: [this.state.current_room[0], this.state.current_room[1]-1]})
+      //send call to BE
     }
   }
   left = event => {
-    if(this.state.grid[this.state.current_room[1]][this.state.current_room[0]-1] === "on"){
-      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+    if(this.state.current_room[0] !== 0 && this.state.grid[this.state.current_room[1]][this.state.current_room[0]-1] === "on"){
+      // console.log(this.state.current_room[0], this.state.current_room[1]-1)
       this.setState({current_room: [this.state.current_room[0]-1, this.state.current_room[1]]})
+      //send call to BE
     }
   }
   right = event => {
-    if(this.state.grid[this.state.current_room[1]][this.state.current_room[0]+1] === "on"){
-      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+    if(this.state.current_room[0] !== 12 && this.state.grid[this.state.current_room[1]][this.state.current_room[0]+1] === "on"){
+      // console.log(this.state.current_room[0], this.state.current_room[1]-1)
       this.setState({current_room: [this.state.current_room[0]+1, this.state.current_room[1]]})
+      //send call to BE
     }
   }
   down = event => {
-    if(this.state.grid[this.state.current_room[1]+1][this.state.current_room[0]] === "on"){
-      console.log(this.state.current_room[0], this.state.current_room[1]-1)
+    if(this.state.current_room[1] !== 12 && this.state.grid[this.state.current_room[1]+1][this.state.current_room[0]] === "on"){
+      // console.log(this.state.current_room[0], this.state.current_room[1]-1)
       this.setState({current_room: [this.state.current_room[0], this.state.current_room[1]+1]})
+      //send call to BE (setState callback?)
     }
   }
 
@@ -71,7 +79,7 @@ class MapGrid extends Component {
         <button onClick={this.down}>v</button>
         </div>
 
-        <button onClick={this.map}>make map</button>
+        {/* <button onClick={this.map}>make map</button> */}
         {this.state.grid.length > 0 && this.state.grid.map((e, i) => {
           return(
             <div className="row">

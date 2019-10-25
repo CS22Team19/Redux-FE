@@ -21,6 +21,37 @@ class App extends Component {
   }
 }
 
+<<<<<<< HEAD
+const mapDispatchToProps = dispatch => ({
+  // getProfileFetch: () => dispatch(getProfileFetch())
+})
+
+export default connect(null, mapDispatchToProps)(App);
+
+// import React from "react";
+// import "./App.css";
+// import { connect } from "react-redux";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <Router>
+//         <div className="App">Boiler Plate</div>
+//       </Router>
+//     );
+//   }
+// }
+
+// const mapStateToProps = state => {
+//   return {};
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   {}
+// )(App);
+=======
 export default App;
 
 
@@ -42,3 +73,4 @@ export default App;
 
 
 
+>>>>>>> 33678b2d3e680dfc1ec3256a114b70e3e3143109
