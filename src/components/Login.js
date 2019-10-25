@@ -9,6 +9,8 @@ import {connect} from 'react-redux';
 import {userLoginFetch} from '../actions';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./Login.css";
+import MapGrid from './MapGrid'
+import TextSpace from './TextSpace'
 
 class Login extends Component {
   state = {
@@ -31,7 +33,7 @@ class Login extends Component {
     if(res){
         this.props.history.push('/dungeon')
     }    
-})
+}) 
 .catch(err => {
     console.log(err)
 })
@@ -64,6 +66,10 @@ class Login extends Component {
             Login
           </Button>
         </form>
+        <div className="yoyo">
+        <MapGrid  player={this.state.username}  />
+        <TextSpace player={this.state.username}  />
+        </div>
       </div>
     );
   }

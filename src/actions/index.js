@@ -37,9 +37,10 @@ export const userLoginFetch = values => {
     return axios
       .post("https://lambda-valley.herokuapp.com/auth/login", values)
       .then(res => {
-        console.log(res); // data was created successfully and logs to console
+        console.log(res.config.data); // data was created successfully and logs to console
         localStorage.setItem("token", res.data.access);
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data, stuff: res.config.data });
+        // dispatch({ type: LOGIN_SUCCESS, stuff: res.config.data });
         return true;
       })
   };
