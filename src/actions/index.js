@@ -31,15 +31,29 @@ export const SIGNUP_FAIL = 'SIGNUP_FAIL'
 //   } catch {}
 // };
 
+export const userLoginFetch = values => {
+  return dispatch => {
+    dispatch({ type: LOGIN_START });
+    return axios
+      .post("https://lambda-valley.herokuapp.com/auth/login", values)
+      .then(res => {
+        console.log(res); // data was created successfully and logs to console
+        localStorage.setItem("token", res.data.access);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        return true;
+      })
+  };
+ };
 
 
-export const userLoginFetch = payload => dispatch => {
-  dispatch({ type: LOGIN_START })
-  axiosWithAuth()
-      .post('https://lambda-valley.herokuapp.com/auth/login', payload)
-      .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
-      .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
-}
+
+// export const userLoginFetch = payload => dispatch => {
+//   dispatch({ type: LOGIN_START })
+//   axiosWithAuth()
+//       .post('https://lambda-valley.herokuapp.com/auth/login', payload)
+//       .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
+//       .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
+// }
 
 export const userPostFetch = payload => dispatch => {
   dispatch({ type: SIGNUP_START })
@@ -48,6 +62,9 @@ export const userPostFetch = payload => dispatch => {
       .then(res => dispatch({ type: SIGNUP_SUCCESS, payload: res.data.payload }))
       .catch(err => dispatch({ type: SIGNUP_FAIL, payload: err }))
 }
+
+
+
 
 
 
